@@ -74,8 +74,8 @@
         <a href="{{ route('profile.edit') }}" class="sidebar-user">
             <span class="sidebar-user-img">
                 <picture>
-                    <source srcset="{{ asset('img/avatar/avatar-illustrated-01.webp') }}" type="image/webp" />
-                    <img src="{{ asset('img/avatar/avatar-illustrated-01.png') }}" alt="{{ Auth::user()->name }}" />
+                    <source srcset="{{ asset('admin/img/avatar/avatar-illustrated-02.webp') }}" type="image/webp" />
+                    <img src="{{ asset('admin/img/avatar/avatar-illustrated-02.png') }}" alt="{{ Auth::user()->name }}" />
                 </picture>
             </span>
             <div class="sidebar-user-info">
