@@ -1,6 +1,36 @@
     <nav class="main-nav--bg">
         <div class="container main-nav">
-            <div class="main-nav-start"></div>
+            <div class="main-nav-start">
+                @php
+                    $segments = request()->segments(); // ambil path segment dari URL
+                    $url = url('/');
+                @endphp
+
+                <nav aria-label="breadcrumb">
+                    <ol class="flex space-x-2 text-gray-600 text-xl">
+                        {{-- Loop setiap segment --}}
+                        @foreach ($segments as $key => $segment)
+                            @php
+                                $url .= '/' . $segment;
+                                // Buat label lebih rapi (capitalize, ganti dash dengan spasi)
+                                $label = ucfirst(str_replace('-', ' ', $segment));
+                            @endphp
+
+                            <li>
+                                @if ($key + 1 < count($segments))
+                                    <a href="{{ $url }}"
+                                        class="hover:underline text-blue-600">{{ $label }}</a>
+                                    <span>/</span>
+                                @else
+                                    <span class="text-gray-500">{{ $label }}</span>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ol>
+                </nav>
+
+            </div>
+
             <div class="main-nav-end">
                 <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
                     <span class="sr-only">Toggle menu</span>
