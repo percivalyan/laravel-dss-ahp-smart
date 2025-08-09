@@ -27,14 +27,7 @@ Route::get('/dashboard', function () {
 
 // Admin - User Management
 Route::middleware(['auth'])->group(function () {
-    Route::get('admin/users', [UserController::class, 'index'])->name('admin.users.index');
-    Route::get('admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
-    Route::post('admin/users', [UserController::class, 'store'])->name('admin.users.store');
-    Route::get('admin/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
-    Route::put('admin/users/{id}', [UserController::class, 'update'])->name('admin.users.update');
-    Route::delete('admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
-
-    // Profile
+    Route::resource('users', UserController::class);
     Route::get('/profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
     Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
 });
